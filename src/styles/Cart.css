@@ -1,0 +1,42 @@
+.cart-container {
+    margin-bottom: 60px;
+    margin-top: 60px;
+}
+
+.cart-item {
+    padding-bottom: 1rem;
+}
+.cart-item h2 {
+    margin-bottom: 0;
+}
+
+.cart-item p {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cart-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
+
+.cart-empty a {
+    text-decoration: underline;
+    margin-top: 60px;
+}
+
+.cart-container button {
+    background-color: #2e0049;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.cart-empty {
+    margin-top: 60px;
+}
