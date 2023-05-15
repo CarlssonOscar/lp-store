@@ -21,7 +21,7 @@ const Cart = () => {
             </div>
         );
     }
-    //hej
+    //heje
     return (
         <div className="cart-container">
             {cart.map((item) => (

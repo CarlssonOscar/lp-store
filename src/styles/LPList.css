@@ -37,3 +37,17 @@
 .lp-item a {
     text-decoration: none;
 }
+
+@media (max-width: 615px) {
+    .lp-item {
+        flex: 1 0 100%;
+        margin: 10px 0;
+        margin: 0 auto;
+    }
+
+    .lp-list {
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+    }
+}
