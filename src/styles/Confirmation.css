@@ -1,0 +1,7 @@
+.confirmation-container a {
+    text-decoration: underline;
+}
+
+.confirmation-container a:hover {
+    color: brown;
+}

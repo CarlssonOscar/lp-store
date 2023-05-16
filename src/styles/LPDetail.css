@@ -11,6 +11,10 @@
     margin-bottom: 0.5rem;
 }
 
+.lp-detail h2:hover {
+    color: brown;
+}
+
 .lp-detail img {
     height: 350px;
     width: 350px;
@@ -30,6 +34,10 @@
     cursor: pointer;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+}
+
+.lp-detail button:hover {
+    background-color: #4e1f6c;
 }
 
 .lp-detail a {

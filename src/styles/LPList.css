@@ -8,8 +8,10 @@
 .lp-list {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-around;
     padding-top: 50px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .lp-image {
@@ -23,6 +25,11 @@
     margin: 1.5%;
     padding: 10px;
     box-sizing: border-box;
+    max-width: 250px;
+}
+
+.lp-item h2:hover {
+    color: brown;
 }
 
 .lp-item h2 {
@@ -41,13 +48,6 @@
 @media (max-width: 615px) {
     .lp-item {
         flex: 1 0 100%;
-        margin: 10px 0;
-        margin: 0 auto;
-    }
-
-    .lp-list {
-        justify-content: center;
-        align-items: center;
-        margin: 0 auto;
+        margin: 10px auto;
     }
 }

@@ -18,3 +18,7 @@
     padding: 30px;
     font-size: 1.8rem;
 }
+
+.header a:hover {
+    color: brown;
+}
