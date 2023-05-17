@@ -1,4 +1,3 @@
-// Import necessary libraries
 import { createContext } from "react";
 
 // Create the context
