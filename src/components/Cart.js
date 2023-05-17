@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import StoreContext from "../contexts/StoreContext";
-import "../styles/Cart.css"; // Import your CSS file
+import "../styles/Cart.css";
 
 const Cart = () => {
     const { cart, removeFromCart } = useContext(StoreContext);
@@ -21,7 +21,6 @@ const Cart = () => {
             </div>
         );
     }
-    //heje
     return (
         <div className="cart-container">
             {cart.map((item) => (

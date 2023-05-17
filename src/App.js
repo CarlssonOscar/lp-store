@@ -8,6 +8,7 @@ import LPDetail from "./components/LPDetail";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import Confirmation from "./components/Confirmation";
+import Orders from "./components/Orders";
 import "./styles/App.css";
 
 // Define the main App component
@@ -27,6 +28,7 @@ function App() {
                         <Route path="/lp/:id" element={<LPDetail />} />
                         <Route path="/cart" element={<Cart />} />
                         <Route path="/checkout" element={<Checkout />} />
+                        <Route path="/orders" element={<Orders />} />
                         <Route
                             path="/confirmation"
                             element={<Confirmation />}

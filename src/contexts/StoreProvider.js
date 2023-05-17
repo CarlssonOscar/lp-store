@@ -3,11 +3,14 @@ import StoreContext from "./StoreContext";
 import { saveOrder } from "./localStorageUtils";
 import LPs from "../data/LPs";
 
+// The StoreProvider component holds the main logic and state for the store.
+// It provides the context values that will be used throughout the app.
 const StoreProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
-    const [inventory, setInventory] = useState(LPs);
-    const [lastOrder, setLastOrder] = useState({ items: 0, total: 0 });
+    const [cart, setCart] = useState([]); // State for the cart.
+    const [inventory, setInventory] = useState(LPs); // State for the inventory.
+    const [lastOrder, setLastOrder] = useState({ items: 0, total: 0 }); // State for the last order.
 
+    // Function to add an item to the cart.
     const addToCart = (lp) => {
         const existingItem = cart.find((item) => item.lp.id === lp.id);
 
@@ -34,6 +37,7 @@ const StoreProvider = ({ children }) => {
         }
     };
 
+    // Function to remove an item from the cart.
     const removeFromCart = (itemToRemove) => {
         setCart(cart.filter((item) => item.lp.id !== itemToRemove.lp.id));
         // Update inventory
@@ -46,10 +50,12 @@ const StoreProvider = ({ children }) => {
         );
     };
 
+    // Function to calculate the total number of items in the cart.
     const calculateCartItems = () => {
         return cart.reduce((total, item) => total + item.quantity, 0);
     };
 
+    // Function to calculate the total price of the items in the cart.
     const calculateTotalPrice = () => {
         return cart.reduce(
             (total, item) => total + item.lp.price * item.quantity,
@@ -57,6 +63,7 @@ const StoreProvider = ({ children }) => {
         );
     };
 
+    // Function to clear the cart.
     const emptyCart = () => {
         setLastOrder({
             items: calculateCartItems(),
@@ -65,9 +72,10 @@ const StoreProvider = ({ children }) => {
         setCart([]);
     };
 
-    const handleCheckout = (event) => {
-        // Save order
+    // Function to handle checkout.
+    const handleCheckout = (orderData) => {
         saveOrder({
+            ...orderData,
             cart,
             total: calculateTotalPrice(),
             items: calculateCartItems(),
@@ -76,6 +84,7 @@ const StoreProvider = ({ children }) => {
     };
 
     return (
+        // The StoreContext.Provider component provides the state and functions to its children.
         <StoreContext.Provider
             value={{
                 inventory,

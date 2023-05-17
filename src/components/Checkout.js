@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import StoreContext from "../contexts/StoreContext";
 import "../styles/Checkout.css"; // Import the CSS file
@@ -8,10 +8,24 @@ const Checkout = () => {
         useContext(StoreContext);
     const navigate = useNavigate();
 
+    const [name, setName] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
+    const [country, setCountry] = useState("");
+
     const onSubmit = (event) => {
         event.preventDefault();
-        handleCheckout();
-        navigate("/confirmation"); // navigate to confirmation page
+
+        const orderData = {
+            name: name,
+            address: address,
+            city: city,
+            country: country,
+            date: new Date(),
+        };
+
+        handleCheckout(orderData);
+        navigate("/confirmation");
     };
 
     return (
@@ -24,24 +38,32 @@ const Checkout = () => {
                     type="text"
                     placeholder="Name"
                     required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                 />
                 <input
                     className="form-input"
                     type="text"
                     placeholder="Address"
                     required
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                 />
                 <input
                     className="form-input"
                     type="text"
                     placeholder="City"
                     required
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
                 />
                 <input
                     className="form-input"
                     type="text"
                     placeholder="Country"
                     required
+                    value={country}
+                    onChange={(e) => setCountry(e.target.value)}
                 />
 
                 <h3>Payment Information</h3>

@@ -23,6 +23,7 @@
 
 .lp-detail p {
     margin: 0.125rem;
+    max-width: 600px;
 }
 
 .lp-detail button {

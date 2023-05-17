@@ -19,7 +19,6 @@ const Confirmation = () => {
         <div className="confirmation-container">
             <h2>Thank you for your order!</h2>
             <h3>Order Summary</h3>
-            {/* assuming each order has a cart, total, and items properties */}
             {order.cart &&
                 order.cart.map((item, index) => (
                     <div key={index}>

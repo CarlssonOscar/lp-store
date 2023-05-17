@@ -12,6 +12,7 @@ const Header = () => {
             <Link to="/cart">
                 CART {cartItemsCount > 0 ? cartItemsCount : ""}
             </Link>
+            <Link to="/orders">ORDERS</Link>
         </header>
     );
 };
