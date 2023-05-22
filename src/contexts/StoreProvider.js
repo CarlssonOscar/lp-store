@@ -9,6 +9,7 @@ const StoreProvider = ({ children }) => {
     const [cart, setCart] = useState([]); // State for the cart.
     const [inventory, setInventory] = useState(LPs); // State for the inventory.
     const [lastOrder, setLastOrder] = useState({ items: 0, total: 0 }); // State for the last order.
+    const [searchTerm, setSearchTerm] = useState(""); // State for the search term.
 
     // Function to add an item to the cart.
     const addToCart = (lp) => {
@@ -83,11 +84,18 @@ const StoreProvider = ({ children }) => {
         emptyCart();
     };
 
+    // Function to search LPs.
+    const searchLPs = (query) => {
+        setSearchTerm(query.toLowerCase());
+    };
+
     return (
         // The StoreContext.Provider component provides the state and functions to its children.
         <StoreContext.Provider
             value={{
-                inventory,
+                inventory: inventory.filter((lp) =>
+                    lp.title.toLowerCase().includes(searchTerm)
+                ),
                 cart,
                 addToCart,
                 removeFromCart,
@@ -96,6 +104,7 @@ const StoreProvider = ({ children }) => {
                 emptyCart,
                 lastOrder,
                 handleCheckout,
+                searchLPs,
             }}
         >
             {children}
