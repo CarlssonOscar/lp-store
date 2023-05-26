@@ -1,5 +1,5 @@
-/* LPDetail.css */
-.lp-detail {
+/* robotDetail.css */
+.robot-detail {
     margin-top: 60px;
     display: flex;
     flex-direction: column;
@@ -7,26 +7,26 @@
     height: 100%; /* adjust as needed */
 }
 
-.lp-detail h2 {
+.robot-detail h2 {
     margin-bottom: 0.5rem;
 }
 
-.lp-detail h2:hover {
+.robot-detail h2:hover {
     color: brown;
 }
 
-.lp-detail img {
+.robot-detail img {
     height: 350px;
     width: 350px;
     object-fit: cover;
 }
 
-.lp-detail p {
+.robot-detail p {
     margin: 0.125rem;
     max-width: 600px;
 }
 
-.lp-detail button {
+.robot-detail button {
     background-color: #2e0049;
     color: white;
     padding: 5px 10px;
@@ -37,11 +37,11 @@
     margin-bottom: 0.5rem;
 }
 
-.lp-detail button:hover {
+.robot-detail button:hover {
     background-color: #4e1f6c;
 }
 
-.lp-detail a {
+.robot-detail a {
     text-decoration: underline;
 }
 

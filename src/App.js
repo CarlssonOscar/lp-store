@@ -3,12 +3,11 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import StoreProvider from "./contexts/StoreProvider";
 import Header from "./components/Header";
-import LPList from "./components/LPList";
-import LPDetail from "./components/LPDetail";
+import RobotList from "./components/RobotList";
+import RobotDetail from "./components/RobotDetail";
 import Cart from "./components/Cart";
 import Checkout from "./components/Checkout";
 import Confirmation from "./components/Confirmation";
-import Orders from "./components/Orders";
 import "./styles/App.css";
 
 // Define the main App component
@@ -24,11 +23,10 @@ function App() {
                     <Header />
                     {/* Define the different routes and the components that should be rendered */}
                     <Routes>
-                        <Route path="/" element={<LPList />} />
-                        <Route path="/lp/:id" element={<LPDetail />} />
+                        <Route path="/" element={<RobotList />} />
+                        <Route path="/robot/:id" element={<RobotDetail />} />
                         <Route path="/cart" element={<Cart />} />
                         <Route path="/checkout" element={<Checkout />} />
-                        <Route path="/orders" element={<Orders />} />
                         <Route
                             path="/confirmation"
                             element={<Confirmation />}

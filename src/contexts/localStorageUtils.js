@@ -6,16 +6,6 @@ export const saveOrder = (order) => {
     localStorage.setItem("latest_order_key", orderId); // Store the latest order key in localStorage.
 };
 
-// Function to load all the orders from the localStorage.
-export const loadOrders = () => {
-    const keys = Object.keys(localStorage); // Get all keys from localStorage.
-    const orderKeys = keys.filter((key) => key.startsWith("order_")); // Filter out the order keys.
-    const orders = orderKeys.map(
-        (key) => JSON.parse(localStorage.getItem(key)) // Convert JSON string back to order object.
-    );
-    return orders; // Return all orders.
-};
-
 // Function to load the latest order from the localStorage.
 export const loadLatestOrder = () => {
     const latestOrderKey = localStorage.getItem("latest_order_key"); // Get the latest order key from localStorage.

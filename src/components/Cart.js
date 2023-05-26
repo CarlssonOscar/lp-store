@@ -8,7 +8,7 @@ const Cart = () => {
 
     const calculateTotal = () => {
         return cart.reduce(
-            (acc, item) => acc + item.lp.price * item.quantity,
+            (acc, item) => acc + item.robot.price * item.quantity,
             0
         );
     };
@@ -24,15 +24,14 @@ const Cart = () => {
     return (
         <div className="cart-container">
             {cart.map((item) => (
-                <div key={item.lp.id} className="cart-item">
+                <div key={item.robot.id} className="cart-item">
                     <img
-                        src={item.lp.image}
-                        alt={item.lp.title}
+                        src={item.robot.image}
+                        alt={item.robot.name}
                         className="cart-image"
                     />
-                    <h2>{item.lp.title}</h2>
-                    <p>{item.lp.artist}</p>
-                    <p>${item.lp.price}</p>
+                    <h2>{item.robot.name}</h2>
+                    <p>${item.robot.price}</p>
                     <p>Quantity: {item.quantity}</p>
                     <button onClick={() => removeFromCart(item)}>
                         Remove from Cart

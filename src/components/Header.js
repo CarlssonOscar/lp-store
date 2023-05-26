@@ -3,22 +3,22 @@ import { Link } from "react-router-dom";
 import StoreContext from "../contexts/StoreContext";
 
 const Header = () => {
-    const { calculateCartItems, searchLPs } = useContext(StoreContext);
+    const { calculateCartItems, searchRobots } = useContext(StoreContext);
     const cartItemsCount = calculateCartItems();
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleSearch = (event) => {
         event.preventDefault();
-        searchLPs(searchQuery);
+        searchRobots(searchQuery);
     };
 
     return (
         <header className="header">
-            <Link to="/">LP STORE</Link>
+            <Link to="/">ROBOT STORE</Link>
             <form onSubmit={handleSearch}>
                 <input
                     type="text"
-                    placeholder="Search LPs..."
+                    placeholder="Search Robots..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
@@ -26,7 +26,6 @@ const Header = () => {
             <Link to="/cart">
                 CART {cartItemsCount > 0 ? cartItemsCount : ""}
             </Link>
-            <Link to="/orders">ORDERS</Link>
         </header>
     );
 };

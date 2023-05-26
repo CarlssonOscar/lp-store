@@ -1,0 +1,33 @@
+{
+    "robots": [
+        {
+            "id": "1",
+            "name": "R2-D2",
+            "price": 19999.99,
+            "inStock": 4,
+            "image": "/images/R2D2.jpeg"
+        },
+        {
+            "id": "2",
+            "name": "WALL-E",
+            "price": 29.99,
+            "inStock": 4,
+            "image": "/images/WALLE.jpeg"
+        },
+        {
+            "id": "3",
+            "name": "EVE",
+            "price": 2449.99,
+            "inStock": 4,
+            "image": "/images/EVE.jpg"
+        },
+        {
+            "id": "4",
+            "name": "TERMINATOR",
+            "price": 399999.99,
+            "inStock": 4,
+            "image": "/images/TERMINATOR.webp"
+        }
+    ],
+    "orders": []
+}

@@ -1,35 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import StoreContext from "./StoreContext";
 import { saveOrder } from "./localStorageUtils";
-import LPs from "../data/LPs";
 
-// The StoreProvider component holds the main logic and state for the store.
-// It provides the context values that will be used throughout the app.
 const StoreProvider = ({ children }) => {
-    const [cart, setCart] = useState([]); // State for the cart.
-    const [inventory, setInventory] = useState(LPs); // State for the inventory.
-    const [lastOrder, setLastOrder] = useState({ items: 0, total: 0 }); // State for the last order.
-    const [searchTerm, setSearchTerm] = useState(""); // State for the search term.
+    const [cart, setCart] = useState([]);
+    const [inventory, setInventory] = useState([]);
+    const [lastOrder, setLastOrder] = useState({ items: 0, total: 0 });
+    const [searchTerm, setSearchTerm] = useState("");
 
-    // Function to add an item to the cart.
-    const addToCart = (lp) => {
-        const existingItem = cart.find((item) => item.lp.id === lp.id);
+    useEffect(() => {
+        fetch("http://localhost:3001/robots")
+            .then((response) => response.json())
+            .then((data) => setInventory(data))
+            .catch((error) => console.error("Error:", error));
+    }, []);
 
-        // Get the current item from the inventory
-        const currentItem = inventory.find((item) => item.id === lp.id);
-
-        // Only add the item to the cart if it's in stock
-        if (currentItem.stock > 0) {
+    const addToCart = (robot) => {
+        const existingItem = cart.find((item) => item.robot.id === robot.id);
+        const currentItem = inventory.find((item) => item.id === robot.id);
+        if (currentItem.inStock > 0) {
             if (existingItem) {
                 existingItem.quantity++;
             } else {
-                setCart([...cart, { lp, quantity: 1 }]);
+                setCart([...cart, { robot, quantity: 1 }]);
             }
-            // Update inventory
             setInventory(
                 inventory.map((item) =>
-                    item.id === lp.id
-                        ? { ...item, stock: item.stock - 1 }
+                    item.id === robot.id
+                        ? { ...item, stock: item.inStock - 1 }
                         : item
                 )
             );
@@ -38,33 +36,28 @@ const StoreProvider = ({ children }) => {
         }
     };
 
-    // Function to remove an item from the cart.
     const removeFromCart = (itemToRemove) => {
-        setCart(cart.filter((item) => item.lp.id !== itemToRemove.lp.id));
-        // Update inventory
+        setCart(cart.filter((item) => item.robot.id !== itemToRemove.robot.id));
         setInventory(
             inventory.map((item) =>
-                item.id === itemToRemove.lp.id
+                item.id === itemToRemove.robot.id
                     ? { ...item, stock: item.stock + 1 }
                     : item
             )
         );
     };
 
-    // Function to calculate the total number of items in the cart.
     const calculateCartItems = () => {
         return cart.reduce((total, item) => total + item.quantity, 0);
     };
 
-    // Function to calculate the total price of the items in the cart.
     const calculateTotalPrice = () => {
         return cart.reduce(
-            (total, item) => total + item.lp.price * item.quantity,
+            (total, item) => total + item.robot.price * item.quantity,
             0
         );
     };
 
-    // Function to clear the cart.
     const emptyCart = () => {
         setLastOrder({
             items: calculateCartItems(),
@@ -73,7 +66,6 @@ const StoreProvider = ({ children }) => {
         setCart([]);
     };
 
-    // Function to handle checkout.
     const handleCheckout = (orderData) => {
         saveOrder({
             ...orderData,
@@ -84,17 +76,15 @@ const StoreProvider = ({ children }) => {
         emptyCart();
     };
 
-    // Function to search LPs.
-    const searchLPs = (query) => {
+    const searchRobots = (query) => {
         setSearchTerm(query.toLowerCase());
     };
 
     return (
-        // The StoreContext.Provider component provides the state and functions to its children.
         <StoreContext.Provider
             value={{
-                inventory: inventory.filter((lp) =>
-                    lp.title.toLowerCase().includes(searchTerm)
+                inventory: inventory.filter((robot) =>
+                    robot.name.toLowerCase().includes(searchTerm)
                 ),
                 cart,
                 addToCart,
@@ -104,7 +94,7 @@ const StoreProvider = ({ children }) => {
                 emptyCart,
                 lastOrder,
                 handleCheckout,
-                searchLPs,
+                searchRobots,
             }}
         >
             {children}

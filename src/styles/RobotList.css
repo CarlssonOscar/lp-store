@@ -1,11 +1,11 @@
-.lp-list-container {
+.robot-list-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
 
-.lp-list {
+.robot-list {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -14,13 +14,13 @@
     box-sizing: border-box;
 }
 
-.lp-image {
+.robot-image {
     height: 250px;
     width: 250px;
     object-fit: cover;
 }
 
-.lp-item {
+.robot-item {
     flex: 1 0 21%;
     margin: 1.5%;
     padding: 10px;
@@ -28,25 +28,25 @@
     max-width: 250px;
 }
 
-.lp-item h2:hover {
+.robot-item h2:hover {
     color: brown;
 }
 
-.lp-item h2 {
+.robot-item h2 {
     font-size: 1.5rem;
     font-family: "Neue Haas Unica", "Arial", sans-serif;
 }
 
-.lp-item p {
+.robot-item p {
     margin-bottom: 0.5rem;
 }
 
-.lp-item a {
+.robot-item a {
     text-decoration: none;
 }
 
 @media (max-width: 615px) {
-    .lp-item {
+    .robot-item {
         flex: 1 0 100%;
         margin: 10px auto;
     }
