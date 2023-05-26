@@ -15,6 +15,9 @@ const Header = () => {
     return (
         <header className="header">
             <Link to="/">ROBOT STORE</Link>
+            <Link to="/cart">
+                CART {cartItemsCount > 0 ? cartItemsCount : ""}
+            </Link>
             <form onSubmit={handleSearch}>
                 <input
                     type="text"
@@ -23,9 +26,6 @@ const Header = () => {
                     onChange={(e) => setSearchQuery(e.target.value)}
                 />
             </form>
-            <Link to="/cart">
-                CART {cartItemsCount > 0 ? cartItemsCount : ""}
-            </Link>
         </header>
     );
 };

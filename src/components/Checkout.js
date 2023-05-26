@@ -13,8 +13,10 @@ const Checkout = () => {
     const [city, setCity] = useState("");
     const [country, setCountry] = useState("");
     const [email, setEmail] = useState("");
+    const [cardHolderName, setCardHolderName] = useState("");
     const [cardNumber, setCardNumber] = useState("");
     const [expiryDate, setExpiryDate] = useState("");
+    const [cvv, setCvv] = useState("");
 
     const validateEmail = (email) => {
         const re = /\S+@\S+\.\S+/;
@@ -23,6 +25,20 @@ const Checkout = () => {
 
     const onSubmit = (event) => {
         event.preventDefault();
+
+        // Add regex validation for Name field.
+        const nameRegex = /^[a-zA-Z ]+$/;
+        if (!nameRegex.test(name)) {
+            alert("Please enter a valid name.");
+            return;
+        }
+
+        // Add regex validation for CVV field.
+        const cvvRegex = /^\d{3}$/;
+        if (!cvvRegex.test(cvv)) {
+            alert("Please enter a valid CVV.");
+            return;
+        }
 
         // Remove spaces and dashes from card number for validation
         const cleanedCardNumber = cardNumber.replace(/[\s-]/g, "");
@@ -128,6 +144,8 @@ const Checkout = () => {
                     type="text"
                     placeholder="Card Holder Name"
                     required
+                    value={cardHolderName}
+                    onChange={(e) => setCardHolderName(e.target.value)}
                 />
                 <input
                     className="form-input"
@@ -150,6 +168,7 @@ const Checkout = () => {
                     type="text"
                     placeholder="CVV"
                     required
+                    onChange={(e) => setCvv(e.target.value)}
                 />
 
                 <h3>Order Summary</h3>

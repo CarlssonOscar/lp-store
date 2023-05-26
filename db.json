@@ -4,7 +4,7 @@
             "id": "1",
             "name": "R2-D2",
             "price": 19999.99,
-            "inStock": 4,
+            "inStock": 2,
             "image": "/images/R2D2.jpeg"
         },
         {
@@ -18,7 +18,7 @@
             "id": "3",
             "name": "EVE",
             "price": 2449.99,
-            "inStock": 4,
+            "inStock": 3,
             "image": "/images/EVE.jpg"
         },
         {
