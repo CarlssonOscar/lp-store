@@ -34,7 +34,7 @@ const StoreProvider = ({ children }) => {
             setInventory(
                 inventory.map((item) =>
                     item.id === robot.id
-                        ? { ...item, stock: item.inStock - 1 }
+                        ? { ...item, inStock: item.inStock - 1 }
                         : item
                 )
             );
@@ -48,7 +48,7 @@ const StoreProvider = ({ children }) => {
         setInventory(
             inventory.map((item) =>
                 item.id === itemToRemove.robot.id
-                    ? { ...item, stock: item.stock + 1 }
+                    ? { ...item, inStock: item.inStock + 1 }
                     : item
             )
         );
@@ -74,7 +74,6 @@ const StoreProvider = ({ children }) => {
     };
 
     const handleCheckout = (orderData) => {
-        console.log("handleCheckout called"); // Add this line
         saveOrder({
             ...orderData,
             cart,
@@ -82,6 +81,7 @@ const StoreProvider = ({ children }) => {
             items: calculateCartItems(),
         });
         emptyCart();
+        return Promise.resolve();
     };
 
     const searchRobots = (query) => {

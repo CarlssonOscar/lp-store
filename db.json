@@ -1,80 +1,33 @@
 {
-  "robots": [
-    {
-      "id": "1",
-      "name": "R2-D2",
-      "price": 19999.99,
-      "inStock": 1,
-      "image": "/images/R2D2.jpeg"
-    },
-    {
-      "id": "2",
-      "name": "WALL-E",
-      "price": 29.99,
-      "inStock": 2,
-      "image": "/images/WALLE.jpeg"
-    },
-    {
-      "id": "3",
-      "name": "EVE",
-      "price": 2449.99,
-      "inStock": 3,
-      "image": "/images/EVE.jpg"
-    },
-    {
-      "id": "4",
-      "name": "TERMINATOR",
-      "price": 399999.99,
-      "inStock": 3,
-      "image": "/images/TERMINATOR.webp"
-    }
-  ],
-  "orders": [
-    {
-      "name": "Oscar Carlsson",
-      "address": "Axtorpsvägen",
-      "city": "Umeå",
-      "country": "Sverige",
-      "email": "oosccar@gmail.com",
-      "date": "2023-05-27T08:31:12.854Z",
-      "cart": [
+    "robots": [
         {
-          "robot": {
             "id": "1",
             "name": "R2-D2",
             "price": 19999.99,
-            "inStock": 2,
+            "inStock": 3,
             "image": "/images/R2D2.jpeg"
-          },
-          "quantity": 1
-        }
-      ],
-      "total": 19999.99,
-      "items": 1,
-      "id": 1
-    },
-    {
-      "name": "Oscar Carlsson",
-      "address": "Axtorpsvägen",
-      "city": "Umeå",
-      "country": "Sverige",
-      "email": "oosccar@gmail.com",
-      "date": "2023-05-27T08:31:12.854Z",
-      "cart": [
+        },
         {
-          "robot": {
-            "id": "1",
-            "name": "R2-D2",
-            "price": 19999.99,
+            "id": "2",
+            "name": "WALL-E",
+            "price": 29.99,
             "inStock": 2,
-            "image": "/images/R2D2.jpeg"
-          },
-          "quantity": 1
+            "image": "/images/WALLE.jpeg"
+        },
+        {
+            "id": "3",
+            "name": "EVE",
+            "price": 2449.99,
+            "inStock": 3,
+            "image": "/images/EVE.jpg"
+        },
+        {
+            "id": "4",
+            "name": "TERMINATOR",
+            "price": 399999.99,
+            "inStock": 0,
+            "image": "/images/TERMINATOR.webp"
         }
-      ],
-      "total": 19999.99,
-      "items": 1,
-      "id": 2
-    }
-  ]
+    ],
+    "orders": []
 }

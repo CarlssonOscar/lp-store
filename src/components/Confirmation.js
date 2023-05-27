@@ -7,6 +7,7 @@ const Confirmation = () => {
     const [order, setOrder] = useState(null);
 
     useEffect(() => {
+        console.log("useEffect called");
         const savedOrder = loadLatestOrder();
         setOrder(savedOrder);
 
@@ -50,11 +51,9 @@ const Confirmation = () => {
         };
 
         if (savedOrder) {
-            try {
-                sendOrderToServer(savedOrder);
-            } catch (error) {
+            sendOrderToServer(savedOrder).catch((error) => {
                 console.error(error);
-            }
+            });
         }
     }, []);
 

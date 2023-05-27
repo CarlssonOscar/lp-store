@@ -17,6 +17,7 @@ const Checkout = () => {
     const [cardNumber, setCardNumber] = useState("");
     const [expiryDate, setExpiryDate] = useState("");
     const [cvv, setCvv] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
     const validateEmail = (email) => {
         const re = /\S+@\S+\.\S+/;
@@ -25,6 +26,12 @@ const Checkout = () => {
 
     const onSubmit = (event) => {
         event.preventDefault();
+
+        if (isSubmitting) {
+            return;
+        }
+
+        setIsSubmitting(true);
 
         // Add regex validation for Name field.
         const nameRegex = /^[a-zA-Z ]+$/;
@@ -89,8 +96,17 @@ const Checkout = () => {
             date: new Date(),
         };
 
-        handleCheckout(orderData);
-        navigate("/confirmation");
+        async function handleButtonPress() {
+            try {
+                await handleCheckout(orderData);
+                navigate("/confirmation");
+            } catch (error) {
+                console.error("Error during checkout:", error);
+            }
+        }
+
+        // later on, when you want to handle the button press:
+        handleButtonPress();
     };
 
     return (
@@ -175,7 +191,9 @@ const Checkout = () => {
                 <p>{calculateCartItems()} items</p>
                 <p>Total: ${calculateTotalPrice().toFixed(2)}</p>
 
-                <button type="submit">Confirm Order</button>
+                <button type="submit" disabled={isSubmitting}>
+                    {isSubmitting ? "Submitting..." : "Confirm Order"}
+                </button>
             </form>
         </div>
     );
