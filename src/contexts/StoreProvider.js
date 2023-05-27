@@ -3,10 +3,17 @@ import StoreContext from "./StoreContext";
 import { saveOrder } from "./localStorageUtils";
 
 const StoreProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
+    /*const [cart, setCart] = useState([]);*/
+    const [cart, setCart] = useState(
+        JSON.parse(localStorage.getItem("cart")) || []
+    );
     const [inventory, setInventory] = useState([]);
     const [lastOrder, setLastOrder] = useState({ items: 0, total: 0 });
     const [searchTerm, setSearchTerm] = useState("");
+
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
 
     useEffect(() => {
         fetch("http://localhost:3001/robots")
@@ -67,6 +74,7 @@ const StoreProvider = ({ children }) => {
     };
 
     const handleCheckout = (orderData) => {
+        console.log("handleCheckout called"); // Add this line
         saveOrder({
             ...orderData,
             cart,

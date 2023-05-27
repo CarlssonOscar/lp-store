@@ -1,5 +1,7 @@
 # Robot Store
 
+## npm install concurrently --save-dev
+
 ## To run project;
 
 ### npm run dev

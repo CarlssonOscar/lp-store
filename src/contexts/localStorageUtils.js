@@ -1,5 +1,6 @@
 // Function to save the order data to the localStorage.
 export const saveOrder = (order) => {
+    console.log("saveOrder called"); // Add this line
     const orderId = "order_" + new Date().getTime(); // Create a unique order id.
     const orderData = JSON.stringify(order); // Convert order data into a JSON string.
     localStorage.setItem(orderId, orderData); // Store the order data in localStorage.
