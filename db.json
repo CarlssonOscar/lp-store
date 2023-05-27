@@ -11,14 +11,14 @@
             "id": "2",
             "name": "WALL-E",
             "price": 29.99,
-            "inStock": 2,
+            "inStock": 3,
             "image": "/images/WALLE.jpeg"
         },
         {
             "id": "3",
             "name": "EVE",
             "price": 2449.99,
-            "inStock": 3,
+            "inStock": 2,
             "image": "/images/EVE.jpg"
         },
         {

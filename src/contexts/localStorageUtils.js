@@ -3,8 +3,6 @@ export const saveOrder = (order) => {
     console.log("saveOrder called"); // Add this line
     const orderId = "order_" + new Date().getTime(); // Create a unique order id.
     const orderData = JSON.stringify(order); // Convert order data into a JSON string.
-    console.log(order);
-    console.log(orderId);
     localStorage.setItem(orderId, orderData); // Store the order data in localStorage.
     localStorage.setItem("latest_order_key", orderId); // Store the latest order key in localStorage.
 };
@@ -19,5 +17,3 @@ export const loadLatestOrder = () => {
     }
     return null; // If no order data exists, return null.
 };
-
-console.log(loadLatestOrder);

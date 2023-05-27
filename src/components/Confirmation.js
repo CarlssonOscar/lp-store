@@ -4,10 +4,10 @@ import { loadLatestOrder } from "../contexts/localStorageUtils";
 import "../styles/Confirmation.css";
 
 const Confirmation = () => {
+    console.log("Confirmation component rendered");
     const [order, setOrder] = useState(null);
 
     useEffect(() => {
-        console.log("useEffect called");
         const savedOrder = loadLatestOrder();
         setOrder(savedOrder);
 
